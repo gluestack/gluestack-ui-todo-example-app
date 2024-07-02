@@ -1,5 +1,4 @@
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { KeyboardAvoidingView } from "@/components/ui/keyboard-avoiding-view";
 import { SafeAreaView } from "@/components/ui/safe-area-view";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
@@ -27,11 +26,9 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider mode="dark">
-      <KeyboardAvoidingView style={{ flex: 1 }}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <Slot />
-        </SafeAreaView>
-      </KeyboardAvoidingView>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Slot />
+      </SafeAreaView>
     </GluestackUIProvider>
   );
 }

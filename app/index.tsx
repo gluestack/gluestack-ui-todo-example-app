@@ -35,11 +35,9 @@ const Home = () => {
       return todo;
     });
     setTodos(updatedTodos);
-    console.log(updatedTodos);
   };
 
   const deleteTodo = (id: number) => {
-    console.log(id);
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };

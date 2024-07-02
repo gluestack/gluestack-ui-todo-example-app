@@ -32,12 +32,7 @@ const TodoContainer = ({
     >
       <Pressable onPress={() => toggleTodo(todo.id)}>
         <HStack className="gap-2">
-          <Checkbox
-            size="sm"
-            aria-label={todo.task}
-            isChecked={todo.completed}
-            value={todo.task}
-          >
+          <Checkbox size="sm" aria-label={todo.task} value={todo.task}>
             <CheckboxIndicator>
               <CheckboxIcon as={CheckIcon} />
             </CheckboxIndicator>
