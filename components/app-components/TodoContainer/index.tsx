@@ -1,12 +1,12 @@
 import React from "react";
 import { HStack } from "@/components/ui/hstack";
-import { Text } from "@/components/ui/text";
 import { Pressable } from "@/components/ui/pressable";
 import { CheckIcon, CloseIcon, Icon } from "@/components/ui/icon";
 import {
   Checkbox,
   CheckboxIcon,
   CheckboxIndicator,
+  CheckboxLabel,
 } from "@/components/ui/checkbox";
 
 export interface Todo {
@@ -28,32 +28,34 @@ const TodoContainer = ({
   return (
     <HStack
       {...props}
-      className="px-6 py-2 hover:bg-secondary-200 rounded-md justify-between items-center"
+      className="rounded-md hover:bg-secondary-200 justify-between items-center"
     >
-      <Pressable onPress={() => toggleTodo(todo.id)} className="w-11/12">
-        <HStack className="gap-2">
-          <Checkbox
-            size="sm"
-            aria-label={todo.task}
-            value={todo.task}
-            isChecked={todo.completed}
-          >
-            <CheckboxIndicator>
-              <CheckboxIcon as={CheckIcon} />
-            </CheckboxIndicator>
-          </Checkbox>
-          <Text
-            className={`text-sm ${todo.completed ? "line-through" : "no-underline"}`}
-          >
-            {todo.task}
-          </Text>
-        </HStack>
+      <Checkbox
+        onChange={(_isChecked) => toggleTodo(todo.id)}
+        size="sm"
+        aria-label={todo.task}
+        value={todo.task}
+        isChecked={todo.completed}
+        className="pl-6 py-2 flex-1"
+      >
+        <CheckboxIndicator>
+          <CheckboxIcon as={CheckIcon} />
+        </CheckboxIndicator>
+        <CheckboxLabel className="text-sm data-[checked=true]:line-through">
+          {todo.task}
+        </CheckboxLabel>
+      </Checkbox>
+      <Pressable className="pr-6 py-2" onPress={() => deleteTodo(todo.id)}>
+        {({ hovered }: { hovered: boolean }) => {
+          return (
+            <Icon
+              as={CloseIcon}
+              size="xs"
+              className={hovered ? "stroke-red-400" : "stroke-primary-50"}
+            />
+          );
+        }}
       </Pressable>
-      <Icon
-        onClick={() => deleteTodo(todo.id)}
-        as={CloseIcon}
-        className="h-3 w-3 color-primary-50 hover:color-red-400"
-      />
     </HStack>
   );
 };

@@ -10,11 +10,11 @@ import shortid from "shortid";
 
 const Home = () => {
   const [item, setItem] = useState("");
-  const [todos, setTodos] = useState(defaultTodos);
+  const [todos, setTodos] = useState<Todo[]>(defaultTodos);
 
   const addTodo = (task: string) => {
-    const lastTodo = todos[todos.length - 1];
-    if (lastTodo.task !== "" && task !== "") {
+    const lastTodo = todos[todos?.length - 1];
+    if (lastTodo?.task !== "" && task !== "") {
       setTodos([
         ...todos,
         {
@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   const toggleTodo = (id: string) => {
-    const updatedTodos = todos.map((todo) => {
+    const updatedTodos = todos?.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
       }
@@ -58,7 +58,7 @@ const Home = () => {
             </Pressable>
           </Input>
         </FormControl>
-        {todos.map((todo: Todo, index: number) => (
+        {todos?.map((todo: Todo, index: number) => (
           <TodoContainer
             key={index}
             todo={todo}
