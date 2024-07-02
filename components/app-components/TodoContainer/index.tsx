@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/checkbox";
 
 export interface Todo {
-  id: number;
+  id: string;
   task: string;
   completed: boolean;
 }
@@ -22,17 +22,22 @@ const TodoContainer = ({
   ...props
 }: {
   todo: Todo;
-  toggleTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
+  toggleTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 }) => {
   return (
     <HStack
       {...props}
-      className="px-6 py-2 hover:bg-secondary-100 rounded-md justify-between items-center"
+      className="px-6 py-2 hover:bg-secondary-200 rounded-md justify-between items-center"
     >
-      <Pressable onPress={() => toggleTodo(todo.id)}>
+      <Pressable onPress={() => toggleTodo(todo.id)} className="w-11/12">
         <HStack className="gap-2">
-          <Checkbox size="sm" aria-label={todo.task} value={todo.task}>
+          <Checkbox
+            size="sm"
+            aria-label={todo.task}
+            value={todo.task}
+            isChecked={todo.completed}
+          >
             <CheckboxIndicator>
               <CheckboxIcon as={CheckIcon} />
             </CheckboxIndicator>
@@ -44,12 +49,11 @@ const TodoContainer = ({
           </Text>
         </HStack>
       </Pressable>
-      <Pressable onPress={() => deleteTodo(todo.id)}>
-        <Icon
-          as={CloseIcon}
-          className="h-3 w-3 color-primary-50 hover:color-red-400"
-        />
-      </Pressable>
+      <Icon
+        onClick={() => deleteTodo(todo.id)}
+        as={CloseIcon}
+        className="h-3 w-3 color-primary-50 hover:color-red-400"
+      />
     </HStack>
   );
 };

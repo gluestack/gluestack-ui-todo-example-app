@@ -3,6 +3,7 @@ import { VStack } from "@/components/ui/vstack";
 import { FormControl } from "@/components/ui/form-control";
 import { Input, InputField, InputIcon } from "@/components/ui/input";
 import { AddIcon } from "@/components/ui/icon";
+import { Pressable } from "@/components/ui/pressable";
 import { defaultTodos } from "@/constants/todo";
 import TodoContainer, { Todo } from "@/components/app-components/TodoContainer";
 import shortid from "shortid";
@@ -13,12 +14,11 @@ const Home = () => {
 
   const addTodo = (task: string) => {
     const lastTodo = todos[todos.length - 1];
-
-    if (lastTodo.task !== "") {
+    if (lastTodo.task !== "" && task !== "") {
       setTodos([
         ...todos,
         {
-          id: Number(shortid.generate()),
+          id: shortid.generate(),
           task: task,
           completed: false,
         },
@@ -27,7 +27,7 @@ const Home = () => {
     }
   };
 
-  const toggleTodo = (id: number) => {
+  const toggleTodo = (id: string) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
@@ -37,23 +37,25 @@ const Home = () => {
     setTodos(updatedTodos);
   };
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = (id: string) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
   return (
-    <VStack className="flex-1 bg-secondary-100 lg:bg-secondary-0 ">
-      <VStack className="pt-6 pb-10 lg:my-24 lg:mx-32 rounded-md bg-secondary-100">
-        <FormControl>
-          <Input variant="underlined" size="md" className={`mx-6 my-2`}>
+    <VStack className="flex-1 bg-secondary-100 md:bg-secondary-0 md:items-center md:justify-center ">
+      <VStack className="rounded-md bg-secondary-100 md:h-[500px] md:w-[700px]">
+        <FormControl className="my-4">
+          <Input variant="underlined" size="sm" className="mx-6 my-2">
             <InputField
-              placeholder="What do to?"
+              placeholder="What is your next task?"
               value={item}
               onChangeText={(value) => setItem(value)}
               onSubmitEditing={() => addTodo(item)}
             />
-            <InputIcon as={AddIcon} className="cursor-pointer h-3 w-3" />
+            <Pressable onPress={() => addTodo(item)}>
+              <InputIcon as={AddIcon} className="cursor-pointer h-3 w-3" />
+            </Pressable>
           </Input>
         </FormControl>
         {todos.map((todo: Todo, index: number) => (
