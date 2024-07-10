@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
-    "@gluestack-ui/checkbox": "^0.1.28",
+    "@gluestack-ui/checkbox": "^0.1.30",
     "@gluestack-ui/form-control": "^0.1.17",
     "@gluestack-ui/icon": "^0.1.22",
     "@gluestack-ui/input": "^0.1.30",
