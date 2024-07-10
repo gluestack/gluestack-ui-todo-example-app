@@ -25,7 +25,7 @@ export default function RootLayout() {
   }
 
   return (
-    <GluestackUIProvider mode="dark">
+    <GluestackUIProvider mode="light">
       <SafeAreaView style={{ flex: 1 }}>
         <Slot />
       </SafeAreaView>

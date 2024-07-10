@@ -3,12 +3,12 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start --web",
-    "dev": "expo start --web",
+    "start": "expo start --web --port 3000",
+    "dev": "expo start --web --port 3000",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "DARK_MODE=media expo start --android",
     "ios": "DARK_MODE=media expo start --ios",
-    "web": "DARK_MODE=class expo start --web",
+    "web": "DARK_MODE=class expo start --web --port 3000",
     "test": "jest --watchAll",
     "lint": "expo lint",
     "postinstall": "patch-package"
