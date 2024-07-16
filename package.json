@@ -11,6 +11,8 @@
     "web": "DARK_MODE=class expo start --web --port 3000",
     "test": "jest --watchAll",
     "lint": "expo lint",
+    "build:web": "expo export -p web",
+    "serve:web": "npx serve dist",
     "postinstall": "patch-package"
   },
   "jest": {
