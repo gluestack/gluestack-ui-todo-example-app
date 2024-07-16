@@ -15,7 +15,7 @@
   },
   "jest": {
     "preset": "jest-expo"
-  },
+  }, 
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@gluestack-ui/checkbox": "^0.1.30",
