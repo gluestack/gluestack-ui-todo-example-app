@@ -1,14 +1,10 @@
+const gluestackPlugin = require('@gluestack-ui/nativewind-utils/tailwind-plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
-  content: ["./app/**/*.{tsx,jsx,ts,js}", "./components/**/*.{tsx,jsx,ts,js}"],
+  darkMode: "media",
+  content: ["app/**/*.{tsx,jsx,ts,js}", "components/**/*.{tsx,jsx,ts,js}"],
   presets: [require('nativewind/preset')],
-  safelist: [
-    {
-      pattern:
-        /(bg|border|text|stroke|fill)-(primary|secondary|tertiary|error|success|warning|info|typography|outline|background)-(0|50|100|200|300|400|500|600|700|800|900|950|white|gray|black|error|warning|muted|success|info|light|dark)/,
-    },
-  ],
   theme: {
     extend: {
       colors: {
@@ -191,6 +187,6 @@ module.exports = {
         'soft-4': '0px 0px 40px rgba(38, 38, 38, 0.1)',
       },
     },
-    plugins: [],
   },
+  plugins: [gluestackPlugin],
 };
